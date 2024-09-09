@@ -1,75 +1,54 @@
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config(); // Ensure dotenv is loaded before anything else
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
-const memberRoutes = require('./routes/member-routes/member-routes');
-const chapterRoutes = require('./routes/chapter-routes/chapter-routes');
-const regionRoutes = require('./routes/region-routes/region-routes');
-const port = process.env.PORT || 5000;
+const path = require('path');
+const cors = require('cors');
 const connectToDatabase = require('./config/database/connect-db'); // Import the connection function
 
-const seedData = require('./datasheet');
-const seedChapterData = require('./datasheet');
-const seedRegionData = require('./datasheet');
+const app = express();
+
+const allowedOrigins = [
+  'http://localhost:5173',
+];
+
+// Define CORS middleware configuration
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Check if the origin is allowed or if it's undefined (e.g., direct access)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Access denied'));
+    }
+  },
+};
+
+app.use(cors(corsOptions)); // Use the CORS middleware with the specified options
+app.use(express.json()); // Middleware to parse JSON requests
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'assets'))); // Serve static files from 'assets' directory
+
+connectToDatabase(); // Connect to the database
+
 const Member = require('./modals/member/member-model');
 const Chapter = require('./modals/chapter/chapter-modal');
 const Region = require('./modals/region/region-modal');
+const memberRoutes = require('./routes/member-routes/member-routes');
+const chapterRoutes = require('./routes/chapter-routes/chapter-routes');
+const regionRoutes = require('./routes/region-routes/region-routes');
 
-seedData();
-seedChapterData();
-seedRegionData();
-// Middleware to parse JSON requests
-app.use(express.json());
-app.use(bodyParser);
-// app.use(urlencoded)
-// Connect to the database
-connectToDatabase().then(() => {
-  // Basic route
-  app.get('/', (req, res) => {
-res.json("hello")
-  });
+app.use('/api', memberRoutes);
+app.use('/api', chapterRoutes);
+app.use('/api', regionRoutes);
 
-  app.use(memberRoutes);
-  app.use(chapterRoutes);
+app.get('/api', (req, res) => {
+  res.json(`Server is running on ${PORT} smoothly`);
+});
 
-  // Example route
-  app.get('/getmembers', async (req, res) => {
-    try {
-      const members = await Member.find({});
-      console.log(members); // Logs the members to the console
-      res.json(members); // Sends the members as a JSON response
-    } catch (error) {
-      console.error('Error fetching members:', error);
-      res.status(500).json({ message: 'Internal server error' }); // Sends an error response if something goes wrong
-    }
-  });
+const PORT = process.env.PORT || 5000;
 
-  app.get('/getchapters', async (req, res) => {
-    try {
-      const chapters = await Chapter.find({});
-      console.log(chapters); // Logs the members to the console
-      res.json(chapters); // Sends the members as a JSON response
-    } catch (error) {
-      console.error('Error fetching chapter:', error);
-      res.status(500).json({ message: 'Internal server error' }); // Sends an error response if something goes wrong
-    }
-  });
-
-  app.get('/getregions', async (req, res) => {
-    try {
-      const regions = await Region.find({});
-      res.status(200).json({regions}); // Sends the members as a JSON response
-    } catch (error) {
-      console.error('Error fetching region:', error);
-      res.status(500).json({ message: 'Internal server error' }); // Sends an error response if something goes wrong
-    }
-  });
-  
-
-  // Start the server after the database connection is successful
-  app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-  });
-}).catch(err => {
-  console.error("Failed to connect to the database. Server not started.", err);
+// Start the Express server and listen for incoming requests on the defined port
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
