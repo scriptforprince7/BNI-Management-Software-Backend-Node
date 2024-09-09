@@ -64,11 +64,11 @@ const memberSchema = new mongoose.Schema({
     required: true,
   },
   regionName: {
-    type: mongoose.Schema.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,,
     ref: 'Region',
   },
   chapterName: {
-    type: mongoose.Schema.ObjectId,
+    type:mongoose.Schema.Types.ObjectId,,
     ref: 'Chapter',
   },
   accolades: {
