@@ -16,3 +16,19 @@ exports.createRegion = async (req, res) => {
     });
   }
 };
+
+exports.getRegions = async (req, res) => {
+  try {
+    const regions = await Region.find({});
+  
+    res.status(201).json({
+      success: true,
+      data: regions
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: error.message
+    });
+  }
+};
