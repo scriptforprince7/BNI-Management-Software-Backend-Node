@@ -16,3 +16,18 @@ exports.createMember = async (req, res) => {
     });
   }
 };
+
+exports.getMembers = async (req, res) => {
+  try {
+    const members = await Member.find({});
+    res.status(201).json({
+      success: true,
+      data: members
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: error.message
+    });
+  }
+};
