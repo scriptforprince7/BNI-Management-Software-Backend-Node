@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { createRegion } = require('../../controllers/region-controller/region-controller');
+const { createRegion,getRegions } = require('../../controllers/region-controller/region-controller');
 
 // Route to create a new member
-router.post('/region', createRegion);
+router.post('/createregion', createRegion);
+router.get('/getregions', getRegions)
 
 module.exports = router;
