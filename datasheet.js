@@ -23,8 +23,8 @@ const dummyMembers = [
       inductionDate: new Date('2020-01-01'),
       companyCategory: 'Tech',
       membershipTimePeriod: 12,
-      regionName:'66dc42a2a24b430d532ace1d',
-      chapterName:'66dc414a6b26dc60e505d8cb',
+      regionName:'66deba227148a47fe236aed3',
+      chapterName:'66deba990cb376ec1b3b1f5c',
       renewalDate: new Date('2024-01-01'),
       renewableDueDate: new Date('2024-01-30'),
       lastRenewableDate: new Date('2023-12-15'),
@@ -47,8 +47,8 @@ const dummyMembers = [
       companyState: 'New York',
       companyCity: 'Brooklyn',
       accolades: 'Golden Lion',
-      regionName:'66dc42a2a24b430d532ace1f',
-      chapterName:'66dc414a6b26dc60e505d8cc',
+      regionName:'66deba227148a47fe236aed5',
+      chapterName:'66deba990cb376ec1b3b1f5d',
       inductionDate: new Date('2019-05-15'),
       companyCategory: 'Retail',
       membershipTimePeriod: 24,
@@ -69,43 +69,25 @@ const dummyMembers = [
 const dummyChapters = [
   {
     chapterName: 'North Region Chapter',
-    region: 'North',
+    region: '66deba227148a47fe236aed3',
     chapterLogo: 'https://example.com/logos/north-chapter.png',
     chapterFees: 100,
     status: 'active',
     chapterAdmin: 'John Doe'
   },
-  {
-    chapterName: 'South Region Chapter',
-    region: 'South',
-    chapterLogo: 'https://example.com/logos/south-chapter.png',
-    chapterFees: 150,
-    status: 'inactive',
-    chapterAdmin: 'Jane Smith'
-  },
+
   {
     chapterName: 'East Region Chapter',
-    region: 'East',
+    region: '66deba227148a47fe236aed4',
     chapterLogo: 'https://example.com/logos/east-chapter.png',
     chapterFees: 120,
     status: 'active',
     chapterAdmin: 'Alice Johnson'
   },
-  {
-    chapterName: 'West Region Chapter',
-    region: 'West',
-    chapterLogo: 'https://example.com/logos/west-chapter.png',
-    chapterFees: 180,
-    status: 'active',
-    chapterAdmin: 'Bob Brown'
-  }
+ 
 ];
 
-const seedChapterData = async()=>{
-  await Chapter.deleteMany({});
-  await Chapter.insertMany(dummyChapters);
-  console.log("Data Inserted Successfullys");
-}
+
 
 const dummyRegions = [
   {
@@ -126,13 +108,9 @@ const dummyRegions = [
   }
 ];
 
-const seedRegionData = async()=>{
-  await Region.deleteMany({});
-  await Region.insertMany(dummyRegions);
-  console.log("Data Inserted Successfullys");
-}
+
 
   
   module.exports = seedData;
-  module.exports = seedChapterData;
-  module.exports = seedRegionData;
+  // module.exports = seedChapterData;
+  // module.exports = seedRegionData;

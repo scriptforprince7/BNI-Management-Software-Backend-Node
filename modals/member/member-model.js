@@ -21,10 +21,10 @@ const memberSchema = new mongoose.Schema({
     required: true,
   },
   alternateMobileNumber: {
-    type: String,
+    type: String, // Optional field for alternate mobile number
   },
   alternateEmailAddress: {
-    type: String,
+    type: String,  // Optional field for alternate email address
     lowercase: true,
     trim: true,
   },
@@ -45,7 +45,7 @@ const memberSchema = new mongoose.Schema({
     required: true,
   },
   gstNumber: {
-    type: String,
+    type: String, // Optional GST Number
   },
   companyPincode: {
     type: String,
@@ -64,16 +64,18 @@ const memberSchema = new mongoose.Schema({
     required: true,
   },
   regionName: {
-    type: mongoose.Schema.Types.ObjectId,,
-    ref: 'Region',
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Region',  // Reference to Region model
+    required: true, // Ensuring the region reference is required
   },
   chapterName: {
-    type:mongoose.Schema.Types.ObjectId,,
-    ref: 'Chapter',
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Chapter',  // Reference to Chapter model
+    required: true,  // Ensuring the chapter reference is required
   },
   accolades: {
     type: String,
-    enum: ['White Lion', 'Blue Lion', 'Red Lion', 'Golden Lion', 'Gold Club Member'],
+    enum: ['White Lion', 'Blue Lion', 'Red Lion', 'Golden Lion', 'Gold Club Member'],  // Enum for accolades
   },
   inductionDate: {
     type: Date,
@@ -84,7 +86,7 @@ const memberSchema = new mongoose.Schema({
     required: true,
   },
   membershipTimePeriod: {
-    type: Number, // You can specify the time period in months or years
+    type: Number,  // Number representing months or years
     required: true,
   },
   renewalDate: {
@@ -92,13 +94,13 @@ const memberSchema = new mongoose.Schema({
     required: true,
   },
   renewableDueDate: {
-    type: Date,
+    type: Date,  // Optional field for renewable due date
   },
   lastRenewableDate: {
-    type: Date,
+    type: Date,  // Optional field for last renewable date
   },
 }, {
-  timestamps: true, // Automatically create `createdAt` and `updatedAt` fields
+  timestamps: true,  // Automatically create `createdAt` and `updatedAt`
 });
 
 // Create the model from the schema

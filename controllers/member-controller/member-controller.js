@@ -19,12 +19,18 @@ exports.createMember = async (req, res) => {
 
 exports.getMembers = async (req, res) => {
   try {
-    const members = await Member.find({});
+    // Fetch members with populated chapterName and regionName
+    const members = await Member.find({})
+      .populate('chapterName')  // Populate chapterName field with Chapter data
+      .populate('regionName');  // Populate regionName field with Region data
+
+    // Send the response with the members' data
     res.status(201).json({
       success: true,
       data: members
     });
   } catch (error) {
+    // Handle errors
     res.status(400).json({
       success: false,
       error: error.message

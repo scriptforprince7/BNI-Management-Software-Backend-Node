@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-// Define the Chapter Schema
-const ModalSchema = new mongoose.Schema({
+// Define the Region Schema
+const RegionSchema = new mongoose.Schema({
   regionName: {
     type: String,
     required: true
@@ -10,11 +10,11 @@ const ModalSchema = new mongoose.Schema({
   regionAdmin: {
     type: String,  // Assuming this is a name or could be a reference to another model
     required: true
-  },
- {
+  }
+}, {
   timestamps: true  // Automatically adds `createdAt` and `updatedAt` fields
 });
 
-// Create and export the Chapter model
-const Region = mongoose.model('Region', ModalSchema);
+// Create and export the Region model
+const Region = mongoose.model('Region', RegionSchema);
 module.exports = Region;

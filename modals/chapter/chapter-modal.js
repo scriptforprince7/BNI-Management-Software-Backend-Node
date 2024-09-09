@@ -7,8 +7,9 @@ const ChapterSchema = new mongoose.Schema({
     required: true
   },
   region: {
-    type:mongoose.Schema.Types.ObjectId,,
-   ref:"Region"
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Region',  // Reference to the Region model
+    required: true  // Ensures that every chapter is linked to a region
   },
   chapterLogo: {
     type: String,  // URL or file path to the chapter logo
@@ -24,7 +25,7 @@ const ChapterSchema = new mongoose.Schema({
     default: 'active'
   },
   chapterAdmin: {
-    type: String,  // Assuming this is a name or could be a reference to another model
+    type: String,  // Can be a name or a reference to a user model
     required: true
   }
 }, {
