@@ -14,7 +14,6 @@ const ModalSchema = new mongoose.Schema({
   chapter:{
     type:mongoose.Schema.Types.ObjectId,
     ref:"Chapter",
-    required:true,
   
 }, {
   timestamps: true  // Automatically adds `createdAt` and `updatedAt` fields
