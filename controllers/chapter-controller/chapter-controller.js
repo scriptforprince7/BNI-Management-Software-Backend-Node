@@ -16,3 +16,18 @@ exports.createChapter = async (req, res) => {
     });
   }
 };
+
+exports.getChapters = async (req, res) => {
+  try {
+    const chapters = await Chapter.find({});
+    res.status(201).json({
+      success: true,
+      data: chapters
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: error.message
+    });
+  }
+};
