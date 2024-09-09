@@ -7,8 +7,8 @@ const ChapterSchema = new mongoose.Schema({
     required: true
   },
   region: {
-    type: String,
-    required: true
+    type:mongoose.Schema.Types.ObjectId,,
+   ref:"Region"
   },
   chapterLogo: {
     type: String,  // URL or file path to the chapter logo
