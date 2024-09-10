@@ -8,8 +8,9 @@ const  seedChapterData=require('./datasheet')
 const app = express();
 
 const allowedOrigins = [
+  'https://bnipayments.nidmm.org',
   'http://localhost:5173',
-  'https://bnipayments.nidmm.org/'
+  'https://bnipayments.nidmm.org'
 ];
 
 // Define CORS middleware configuration
