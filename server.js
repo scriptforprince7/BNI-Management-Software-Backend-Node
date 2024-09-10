@@ -4,7 +4,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const connectToDatabase = require('./config/database/connect-db'); // Import the connection function
-
+const seedData=require('./datasheet')
+const seedChapterData=require("./datasheet");
+const seedRegionData=require('./datasheet')
 const app = express();
 
 const allowedOrigins = [
@@ -30,7 +32,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'assets'))); // Serve static files from 'assets' directory
 
 connectToDatabase(); // Connect to the database
-
+// seedData();
+// seedChapterData();
+// seedRegionData()
 const Member = require('./modals/member/member-model');
 const Chapter = require('./modals/chapter/chapter-modal');
 const Region = require('./modals/region/region-modal');
