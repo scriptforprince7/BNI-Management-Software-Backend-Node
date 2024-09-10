@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Define the Region Schema
-const ModalSchema = new mongoose.Schema({
+const RegionSchema = new mongoose.Schema({
   regionName: {
     type: String,
     required: true
@@ -15,5 +15,5 @@ const ModalSchema = new mongoose.Schema({
 });
 
 // Create and export the Region model
-const Region = mongoose.model('Region', ModalSchema);
+const Region = mongoose.model('Region', RegionSchema);
 module.exports = Region;

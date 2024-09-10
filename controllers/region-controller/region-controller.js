@@ -19,7 +19,7 @@ exports.createRegion = async (req, res) => {
 
 exports.getRegions = async (req, res) => {
   try {
-    const regions = await Region.find({});
+    const regions = await Region.find({})
   
     res.status(201).json({
       success: true,
