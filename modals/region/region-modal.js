@@ -6,7 +6,6 @@ const RegionSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-
   regionAdmin: {
     type: String,  // Assuming this is a name or could be a reference to another model
     required: true

@@ -91,20 +91,25 @@ const dummyChapters = [
 
 const dummyRegions = [
   {
-    regionName: 'North',
-    regionAdmin: 'Emily Davis'
+    "regionid": "650f2a9e1c4a9b3af0c123a1",
+    "regionName": "Delhi East",
+    "regionAdmin": "John Doe",
+    "createdAt": "2024-09-09T10:00:00.000Z",
+    "updatedAt": "2024-09-09T10:00:00.000Z"
   },
   {
-    regionName: 'South',
-    regionAdmin: 'Michael Wilson'
+    "regionid": "650f2a9e1c4a9b3af0c123a2",
+    "regionName": "Delhi West",
+    "regionAdmin": "Jane Smith",
+    "createdAt": "2024-09-09T10:00:00.000Z",
+    "updatedAt": "2024-09-09T10:00:00.000Z"
   },
   {
-    regionName: 'East',
-    regionAdmin: 'Sarah Lee'
-  },
-  {
-    regionName: 'West',
-    regionAdmin: 'David Clark'
+    "regionid": "650f2a9e1c4a9b3af0c123a3",
+    "regionName": "Delhi North",
+    "regionAdmin": "Alice Johnson",
+    "createdAt": "2024-09-09T10:00:00.000Z",
+    "updatedAt": "2024-09-09T10:00:00.000Z"
   }
 ];
 
