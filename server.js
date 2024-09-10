@@ -4,17 +4,12 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const connectToDatabase = require('./config/database/connect-db'); // Import the connection function
-<<<<<<< HEAD
-const seedData=require('./datasheet')
-const seedChapterData=require("./datasheet");
-const seedRegionData=require('./datasheet')
-=======
 const  seedChapterData=require('./datasheet')
->>>>>>> 6c10b7f0d8d15235e3bb209795f1a2043c2566a6
 const app = express();
 
 const allowedOrigins = [
   'http://localhost:5173',
+  'https://bnipayments.nidmm.org/'
 ];
 
 // Define CORS middleware configuration
@@ -36,14 +31,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'assets'))); // Serve static files from 'assets' directory
 
 connectToDatabase(); // Connect to the database
-<<<<<<< HEAD
-// seedData();
-// seedChapterData();
-// seedRegionData()
-=======
 // seedChapterData();
 // seedData();
->>>>>>> 6c10b7f0d8d15235e3bb209795f1a2043c2566a6
 const Member = require('./modals/member/member-model');
 const Chapter = require('./modals/chapter/chapter-modal');
 const Region = require('./modals/region/region-modal');
