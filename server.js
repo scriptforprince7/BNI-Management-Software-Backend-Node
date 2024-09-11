@@ -10,6 +10,7 @@ const app = express();
 const allowedOrigins = [
   'https://bnipayments.nidmm.org',
   'http://localhost:5173',
+  'http://103.169.86.3:5001',
   'https://bnipayments.nidmm.org'
 ];
 
